@@ -23,6 +23,7 @@ class _FormsState extends State<Forms> {
               if (value!.isEmpty) {
                 return "l'email doit etre renseigner";
               }
+              return null;
             },
             keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(
@@ -55,7 +56,7 @@ class _FormsState extends State<Forms> {
           ),
 
           RadioListTile(
-              title: Text('Homme'),
+              title: const Text('Homme'),
               value: 'Homme',
               groupValue: genre,
               onChanged: (value) {
@@ -64,7 +65,7 @@ class _FormsState extends State<Forms> {
                 });
               }),
           RadioListTile(
-              title: Text('Femme'),
+              title: const Text('Femme'),
               value: 'Femme',
               groupValue: genre,
               onChanged: (value) {
@@ -74,7 +75,7 @@ class _FormsState extends State<Forms> {
               }),
 
           CheckboxListTile(
-              title: Text('Banane'),
+              title: const Text('Banane'),
               value: isChecked,
               onChanged: (value) {
                 print(value);

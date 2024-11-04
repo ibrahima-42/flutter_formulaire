@@ -1,4 +1,4 @@
-import 'package:legendeone/forms.dart';
+import 'package:legendeone/addUser.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Forms(),
+      home: AddUser(),
     );
   }
 }
