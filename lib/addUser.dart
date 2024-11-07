@@ -10,11 +10,25 @@ class AddUser extends StatefulWidget {
 class _AddUserState extends State<AddUser> {
   String? genre = 'Homme';
   final _keyForm = GlobalKey<FormState>();
-  final TextEditingController _nomController = new TextEditingController();
-  final TextEditingController _prenomController = new TextEditingController();
-  final TextEditingController _emailController = new TextEditingController();
-  final TextEditingController _phoneController = new TextEditingController();
-  final TextEditingController _dateController = new TextEditingController();
+  final TextEditingController _nomController = TextEditingController();
+  final TextEditingController _prenomController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
+  DateTime? _SelectedDate;
+  Future<void> SelectDate(BuildContext context) async {
+    final DateTime? date = await showDatePicker(
+        context: context,
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2030),
+        initialDate: DateTime.now());
+    if (date != null && date != _SelectedDate) {
+      setState(() {
+        _SelectedDate = date;
+        _dateController.text = _SelectedDate!.toLocal().toString();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,6 +135,7 @@ class _AddUserState extends State<AddUser> {
                     SizedBox(
                       width: 364.0,
                       child: TextFormField(
+                        onTap: () => SelectDate(context),
                         controller: _dateController,
                         validator: (value) {
                           if (value!.isEmpty) {
